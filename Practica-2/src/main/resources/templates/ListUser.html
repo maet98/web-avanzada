@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Students</title>
+    <title>Users</title>
     <!-- CSS only -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
@@ -13,7 +13,7 @@
 <body>
 <div class="card text-center">
     <div class="card-header">
-        <h2>List of User:</h2>
+        <h2>List of Clients:</h2>
     </div>
     <div class="card-body">
         <div class="text-right" style="margin: 12px">
@@ -33,23 +33,15 @@
             </tr>
             </thead>
             <tbody>
-            <#list users as user>
-                <tr>
-                    <th>${user?index + 1}</th>
-                    <td>${user.cedula}</td>
-                    <td>${user.firstName}</td>
-                    <td>${user.lastName}</td>
-                    <td><img src="${user.image}"/></td>
-                    <td>
-                        <a href="${"/user/update/"+ user.cedula}">
-                            <button class="btn btn-warning" >Update</button>
-                        </a>
-                        <a href="${"/user/delete/"+ user.cedula}">
-                            <button class="btn btn-danger" >Delete</button>
-                        </a>
-                    </td>
-                </tr>
-            </#list>
+            <tr th:each="user: ${users}">
+                <th th:text="${userStat.index}"></th>
+                <td th:text="${user.cedula}"></td>
+                <td th:text="${user.firstName}"></td>
+                <td th:text="${user.lastName}"></td>
+                <td><img th:src="${user.image}"/></td>
+                <td>
+                </td>
+            </tr>
             </tbody>
         </table>
     </div>

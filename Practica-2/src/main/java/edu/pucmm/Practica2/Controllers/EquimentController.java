@@ -1,12 +1,8 @@
 package edu.pucmm.Practica2.Controllers;
 
 import edu.pucmm.Practica2.DTO.EquimentForm;
-import edu.pucmm.Practica2.DTO.UserForm;
 import edu.pucmm.Practica2.entities.Equiment;
-import edu.pucmm.Practica2.entities.User;
-import edu.pucmm.Practica2.repositories.SubFamilyRepository;
 import edu.pucmm.Practica2.services.EquimentService;
-import edu.pucmm.Practica2.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,9 +20,6 @@ public class EquimentController {
     @Autowired
     private EquimentService equimentService;
 
-    @Autowired
-    private SubFamilyRepository subFamilyRepository;
-
     @GetMapping
     public String ListAll(Model model) {
         model.addAttribute("equiments", equimentService.getAll());
@@ -43,8 +36,7 @@ public class EquimentController {
     }
 
     @GetMapping("/register")
-    public String userForm(Model model) {
-        model.addAttribute("subfamilies",subFamilyRepository.findAll());
+    public String equimentForm(Model model) {
         return "EquimentForm";
     }
 }

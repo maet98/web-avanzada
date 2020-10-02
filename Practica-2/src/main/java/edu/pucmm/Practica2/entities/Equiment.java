@@ -14,9 +14,6 @@ public class Equiment {
     @Column(length = 10000000)
     private String image;
 
-    @ManyToOne
-    private SubFamily subFamily;
-
     public Equiment( String name, Integer quantity, Float cost) {
         this.name = name;
         this.quantity = quantity;
@@ -67,11 +64,4 @@ public class Equiment {
         this.image = image;
     }
 
-    public SubFamily getSubFamily() {
-        return subFamily;
-    }
-
-    public void setSubFamily(SubFamily subFamily) {
-        this.subFamily = subFamily;
-    }
 }

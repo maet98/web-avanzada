@@ -1,5 +1,6 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Equiments</title>
     <!-- CSS only -->
@@ -33,23 +34,21 @@
             </tr>
             </thead>
             <tbody>
-            <#list equiments as equiment>
-                <tr>
-                    <th>${equiment.id}</th>
-                    <td><img src="${equiment.image}"/></td>
-                    <td>${equiment.name}</td>
-                    <td>${equiment.quantity}</td>
-                    <td>${equiment.cost}</td>
-                    <td>
-                        <a href="${"/user/update/"+ user.cedula}">
-                            <button class="btn btn-warning" >Update</button>
-                        </a>
-                        <a href="${"/user/delete/"+ user.cedula}">
-                            <button class="btn btn-danger" >Delete</button>
-                        </a>
-                    </td>
-                </tr>
-            </#list>
+            <tr th:each="equiment: ${equiments}">
+                <th th:text="${equiment.id}"></th>
+                <td><img th:src="${equiment.image}"/></td>
+                <td th:text="${equiment.name}"></td>
+                <td th:text="${equiment.quantity}"></td>
+                <td th:text="${equiment.cost}"></td>
+                <td>
+                    <a th:href="@{/equiment/update/{id}(id=${equiment.id})}">
+                    <button class="btn btn-warning" >Update</button>
+                    </a>
+                    <a th:href="@{/equiment/delete/{id}(id=${equiment.id})}">
+                        <button class="btn btn-danger" >Delete</button>
+                    </a>
+                </td>
+            </tr>
             </tbody>
         </table>
     </div>
