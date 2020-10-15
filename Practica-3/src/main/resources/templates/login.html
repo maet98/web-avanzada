@@ -1,10 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <title>Login Customizado.....</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
 <body>
-$END$
+<h1>Formulario Demo Para Autentificación</h1>
+<form role="form" action="/login" method="post">
+    <div class="form-group">
+        <label for="username">Usuario</label>
+        <input type="text" name="username" id="username" required autofocus>
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" required>
+    </div>
+    <button type="submit">Sign in</button>
+    </form>
+    <p th:if="${error.isPresent()}">usuario no existe....</p>
+
 </body>
 </html>

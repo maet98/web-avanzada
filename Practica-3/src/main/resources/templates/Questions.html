@@ -1,10 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Question</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 </head>
 <body>
-$END$
+
+    <script th:inline="javascript">
+            function myFunction(){
+                var formData = JSON.stringify($("#myForm").serializeArray());
+                var url = "http://localhost:8080/survey";
+                fetch(url, {
+                method:"POST",
+                body: formData
+                })
+                .then(result => {
+                    console.log("Completed with result:", result);
+                });
+                return false;
+            }
+        </script>
+    <form action="#" th:action="@{/survey}" th:object="${form}"  method="post">
+        <fieldset>
+            <div th:each="valoration : *{valorations}" class="card text-center">
+                <div class="card-header">
+                    <h3 th:text="${valoration.question.value}" />
+                </div>
+                <div class="card-body">
+                    <div class="form-group" th:if="${valoration.question.comment == false}">
+                        <label>Valoration:</label>
+                        <select class="form-control" th:field="*{valorations[__${valorationStat.index}__].value}">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                    <div class="form-group" th:if="${valoration.question.comment}">
+                        <label >Leave a Comment</label>
+                        <textarea class="form-control" rows="3" th:field="*{valorations[__${valorationStat.index}__].comment}" ></textarea>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="text-center btn btn-primary btn-block">Finish</button>
+        </fieldset>
+    </form>
 </body>
 </html>

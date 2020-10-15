@@ -1,25 +1,27 @@
 package edu.pucmm.Practica3.DTO;
 
-public class Data {
-    public Integer name;
-    public String value;
+import edu.pucmm.Practica3.Entities.Valoration;
 
-    public Data() {
+import java.util.ArrayList;
+import java.util.List;
+
+public class ValorationCreationDTO {
+    private List<Valoration> valorations = new ArrayList<>();
+
+    public ValorationCreationDTO() {
+        valorations = new ArrayList<>();
     }
 
-    public Integer getName() {
-        return name;
+    public void addValoration(Valoration valoration) {
+        this.valorations.add(valoration);
     }
 
-    public void setName(Integer name) {
-        this.name = name;
+    public List<Valoration> getValorations() {
+
+        return valorations;
     }
 
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
+    public void setValorations(List<Valoration> valorations) {
+        this.valorations = valorations;
     }
 }

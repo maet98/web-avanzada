@@ -1,18 +1,48 @@
 package edu.pucmm.Practica3.Entities;
 
-import javassist.compiler.ast.Pair;
-
 import javax.persistence.*;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 @Entity
-public class Valoration {
+public class Questionary {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", updatable = false, nullable = false)
     private Long id;
 
     @ManyToOne
-    private Question question;
+    @JoinColumn(name="userId")
+    private User user;
 
-    private Integer value;
+    @OneToMany(mappedBy = "questionary", fetch = FetchType.LAZY)
+    private List<Valoration> valorations;
+
+    public Questionary() {
+    }
+
+    public Questionary(User user) {
+        this.user = user;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public List<Valoration> getValorations() {
+        return valorations;
+    }
+
+    public void setValorations(List<Valoration> valorations) {
+        this.valorations = valorations;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }
