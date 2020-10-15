@@ -1,0 +1,37 @@
+plugins {
+	id 'org.springframework.boot' version '2.3.4.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+	id 'java'
+}
+
+group = 'edu.pucmm'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+
+	implementation 'io.jsonwebtoken:jjwt-api:0.10.5'
+	implementation 'io.jsonwebtoken:jjwt-impl:0.10.5'
+	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.10.5'
+
+	compile 'org.webjars:npm:5.0.0-2'
+	compile 'org.webjars:vue:2.6.11'
+	compile 'org.webjars.npm:axios:0.20.0'
+	runtimeOnly 'com.h2database:h2'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+}
+
+test {
+	useJUnitPlatform()
+}

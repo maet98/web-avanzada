@@ -1,0 +1,22 @@
+{
+    "Cedula": "Id",
+  "message": "hello i18n !!",
+  "firstName": "First Name",
+  "lastname": "Last Name",
+  "ListClient": "List of client",
+  "Email":"Email",
+  "Photo":"Photo",
+  "Actions": "Actions",
+  "ListEquiment": "List of Equiment",
+  "InsertImage": "Insert Image Here",
+  "Cost": "Cost",
+  "Quantity": "Quantity",
+  "Name": "Name",
+  "NewClient": "New Client",
+  "ListEquiment": "List of Equiment",
+  "ListRental": "List of Rentals",
+  "NewEquiment": "New Equiment",
+  "Client": "Client",
+  "ExpectedReturnDate": "Expected return date"
+
+}
