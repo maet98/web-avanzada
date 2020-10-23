@@ -40,7 +40,7 @@ public class SeguridadServices implements UserDetailsService {
         userRepository.save(admin);
 
         User user = new User();
-        user.setEmail("maletaveras@gmail.com");
+        user.setEmail("user");
         user.setPassword(bCryptPasswordEncoder.encode("1234"));
         user.setRoles(new HashSet<>(Arrays.asList(rolUser)));
         userRepository.save(user);

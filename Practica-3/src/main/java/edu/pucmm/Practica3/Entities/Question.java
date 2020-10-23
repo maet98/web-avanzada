@@ -1,6 +1,7 @@
 package edu.pucmm.Practica3.Entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Question {
@@ -13,6 +14,9 @@ public class Question {
     private String value;
 
     private Boolean comment;
+
+    @OneToMany(mappedBy = "question", fetch = FetchType.LAZY)
+    private List<Valoration> valorations;
 
     public Question() {
     }
@@ -40,6 +44,14 @@ public class Question {
 
     public void setValue(String value) {
         this.value = value;
+    }
+
+    public List<Valoration> getValorations() {
+        return valorations;
+    }
+
+    public void setValorations(List<Valoration> valorations) {
+        this.valorations = valorations;
     }
 
     @Override

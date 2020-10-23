@@ -1,0 +1,35 @@
+#indica la version de Docker Compose utilizada
+version: '3.7'
+
+services:
+  app-web:      
+    image: maet98/cuestionario:1.0
+    ports:          
+      - 80:80
+    environment:    
+      - spring.datasource.url=jdbc:mysql://base-datos-app-web:3306/practica
+    networks:    
+      - red-app
+    volumes:
+    - my-volume:/tmp/
+    depends_on:   
+      - base-datos-app-web
+
+  base-datos-app-web:
+    image: mysql:5.7.6
+    ports:
+      - 33006:3306
+    environment:
+      -  MYSQL_ROOT_PASSWORD=1234
+      -  MYSQL_DATABASE=practica
+    networks:
+      - red-app
+
+
+networks:  
+  red-app:   
+
+volumes: 
+  my-volume:
+
+

@@ -36,8 +36,8 @@ public class Config extends WebSecurityConfigurerAdapter {
         //Marcando las reglas para permitir unicamente los usuarios
         http
                 .authorizeRequests()
-                .antMatchers("/**").hasAnyRole("ADMIN","USER")
-                .anyRequest().denyAll()
+                .antMatchers("/admin/**").hasAnyRole("ADMIN")
+                .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")
