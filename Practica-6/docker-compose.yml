@@ -1,0 +1,45 @@
+version: '3.7'
+
+services:
+  activemq:
+    image: rmohr/activemq:5.14.0-alpine
+    ports:
+      - 61616:61616
+      - 8161:8161
+    networks:
+      - my-red
+
+  productor-1: 
+    image: maet98/jms_productor:1.0
+    environment:    
+      - CLIENT_ID=1
+      - JMS_IP=activemq
+    networks:
+      - my-red
+    depends_on:
+      - consumidor
+
+
+  productor-2: 
+    image: maet98/jms_productor:1.0
+    environment:    
+      - CLIENT_ID=2
+      - JMS_IP=activemq
+    networks:
+      - my-red
+    depends_on:
+      - consumidor
+  
+  consumidor:
+    image: maet98/jms_consumidor:1.0
+    environment:
+      - JMS_IP=activemq
+    ports:
+      - 80:8080
+    networks:
+      - my-red
+    depends_on:
+      - activemq
+
+networks:
+  my-red:
