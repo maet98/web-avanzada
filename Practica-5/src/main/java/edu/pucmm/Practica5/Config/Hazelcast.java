@@ -1,4 +1,4 @@
-package edu.pucmm.Practica3.Config;
+package edu.pucmm.Practica5.Config;
 
 import com.hazelcast.config.Config;
 import com.hazelcast.config.MapAttributeConfig;

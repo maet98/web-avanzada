@@ -1,0 +1,77 @@
+version: '3.7'
+
+services:
+  balanceador:
+      image: maet98/my-haproxy:1.0
+      ports:
+        - 80:80
+        - 443:443
+      networks:
+        - red-app
+      depends_on:
+        - app-web-1
+        - app-web-2
+        - app-web-3
+      
+  app-web-1:      
+    image: maet98/cuestionario:2.0
+    ports:          
+      - 8080:8080
+    environment:    
+      - spring.datasource.url=jdbc:mysql://base-datos-app-web:3306/practica
+      - server.port=8080
+    networks:    
+      - red-app
+    volumes:
+    - my-volume:/tmp/
+    depends_on:   
+      - base-datos-app-web
+
+  app-web-2:      
+    image: maet98/cuestionario:2.0
+    ports:          
+      - 8081:8081
+    environment:    
+      - spring.datasource.url=jdbc:mysql://base-datos-app-web:3306/practica
+      - server.port=8081
+    networks:    
+      - red-app
+    volumes:
+    - my-volume:/tmp/
+    depends_on:   
+      - base-datos-app-web
+
+  app-web-3:      
+    image: maet98/cuestionario:2.0
+    ports:          
+      - 8082:8082
+    environment:    
+      - spring.datasource.url=jdbc:mysql://base-datos-app-web:3306/practica
+      - server.port=8082
+    networks:    
+      - red-app
+    volumes:
+    - my-volume:/tmp/
+    depends_on:   
+      - base-datos-app-web
+
+  base-datos-app-web:
+    image: mysql:5.7.6
+    ports:
+      - 33006:3306
+    environment:
+      -  MYSQL_ROOT_PASSWORD=1234
+      -  MYSQL_DATABASE=practica
+    volumes:
+      - ~/mysql:/var/lib/mysql
+    networks:
+      - red-app
+
+
+networks:  
+  red-app:   
+
+volumes: 
+  my-volume:
+
+
