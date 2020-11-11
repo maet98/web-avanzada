@@ -22,6 +22,8 @@ services:
     environment:
       -  MYSQL_ROOT_PASSWORD=1234
       -  MYSQL_DATABASE=practica
+    volumes:
+      - ~/mysql:/var/lib/mysql
     networks:
       - red-app
 

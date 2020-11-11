@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d2300abc-f8a6-48fe-8e8c-6aa235b585e0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../Practica-5/src/main/java/edu/pucmm/Practica5/Config/Hazelcast.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practica-6/Consumidor/src/main/java/edu/pucmm/Practica6/Consumidor/Config/ActiveMQConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practica-6/Consumidor/src/main/java/edu/pucmm/Practica6/Consumidor/Controllers/Consumer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practica-6/Consumidor/src/main/java/edu/pucmm/Practica6/Consumidor/Controllers/GreetingController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practica-6/Consumidor/src/main/java/edu/pucmm/Practica6/Consumidor/Controllers/MainController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practica-6/Consumidor/src/main/java/edu/pucmm/Practica6/Consumidor/DTO/Data.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practica-6/Consumidor/src/main/java/edu/pucmm/Practica6/Consumidor/DTO/GraphData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practica-6/Consumidor/src/main/java/edu/pucmm/Practica6/Consumidor/DTO/Greeting.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practica-6/Consumidor/src/main/java/edu/pucmm/Practica6/Consumidor/DTO/HelloMessage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practica-6/Consumidor/src/main/java/edu/pucmm/Practica6/Consumidor/Websocket/webSocketManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practica-6/Consumidor/src/main/resources/static/js/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practica-6/Consumidor/src/main/resources/static/js/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practica-6/Consumidor/src/main/resources/templates/Greetings.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practica-6/Consumidor/src/main/resources/templates/Home.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practica-6/Productor/src/main/java/edu/pucmm/Practica6/Productor/Data.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Practica-6/Productor/src/main/java/edu/pucmm/Practica6/Productor/Productor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practica-1/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/../Practica-1/gradlew" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practica-1/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Practica-1/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/backend/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/backend/gradlew" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/edu/pucmm/Practica2/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/edu/pucmm/Practica2/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/edu/pucmm/Practica2/Controllers/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/edu/pucmm/Practica2/Controllers/ClientController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/edu/pucmm/Practica2/Controllers/EquimentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/edu/pucmm/Practica2/Controllers/EquimentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/edu/pucmm/Practica2/Controllers/RentalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/edu/pucmm/Practica2/Controllers/RentalController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/edu/pucmm/Practica2/Controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/edu/pucmm/Practica2/Controllers/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/edu/pucmm/Practica2/Controllers/languageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/edu/pucmm/Practica2/Controllers/languageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/edu/pucmm/Practica2/DTO/EquimentForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/edu/pucmm/Practica2/DTO/EquimentForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/edu/pucmm/Practica2/config/JWTAutorizationFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/edu/pucmm/Practica2/config/SecurityConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/edu/pucmm/Practica2/entities/Equiment.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/edu/pucmm/Practica2/entities/Equiment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/edu/pucmm/Practica2/entities/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/edu/pucmm/Practica2/entities/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/edu/pucmm/Practica2/entities/Rental.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/edu/pucmm/Practica2/entities/Rental.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/edu/pucmm/Practica2/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/edu/pucmm/Practica2/entities/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/edu/pucmm/Practica2/repositories/ClientRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/edu/pucmm/Practica2/repositories/ClientRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/edu/pucmm/Practica2/repositories/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/edu/pucmm/Practica2/repositories/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/edu/pucmm/Practica2/services/ClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/edu/pucmm/Practica2/services/ClientService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/edu/pucmm/Practica2/services/EquimentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/edu/pucmm/Practica2/services/EquimentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/edu/pucmm/Practica2/services/RentalService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/edu/pucmm/Practica2/services/RentalService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/edu/pucmm/Practica2/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/edu/pucmm/Practica2/services/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/EquimentForm.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/EquimentForm.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Modal.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Modal.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/RentalForm.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/RentalForm.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/locales/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/locales/en.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/locales/es.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/locales/es.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/store/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/utils/apiCall.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/utils/apiCall.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/Client.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/Client.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/Equiment.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/Equiment.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/Login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/Rental.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/Rental.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practica-3/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../Practica-3/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practica-3/src/main/resources/templates/Home.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Practica-3/src/main/resources/templates/Home.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1iK5CECg19v5vhcLz50KdL9bOOC" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/backend" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d2300abc-f8a6-48fe-8e8c-6aa235b585e0" name="Default Changelist" comment="" />
+      <created>1601643317222</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1601643317222</updated>
+      <workItem from="1601643319376" duration="30000" />
+      <workItem from="1604168052770" duration="97000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="741" y="273" width="428" height="472" key="FileChooserDialogImpl" timestamp="1601643346481">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="741" y="273" width="428" height="472" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1601643346481" />
+  </component>
+</project>

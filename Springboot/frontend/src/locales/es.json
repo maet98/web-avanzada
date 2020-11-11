@@ -1,0 +1,25 @@
+{
+    "Cedula": "Cedula",
+    "message": "Hola i18n",
+    "firstName": "Nombre",
+    "lastName": "Apellido",
+    "ListClient": "Lista de Clientes",
+    "Email":"Correo",
+    "Photo":"Foto",
+    "Actions": "Acciones",
+    "ListEquiment": "Lista de equipos",
+    "InsertImage": "Inserta Imagen aqui",
+    "Cost": "Costo",
+    "Quantity": "Cantidad",
+    "Name": "Nombre",
+    "NewClient": "Nuevo Cliente",
+    "ListEquiment": "Lista de equipos",
+    "ListRental": "Lista de alquileres",
+    "NewEquiment": "Nuevo Equipo",
+    "Client": "Cliente",
+    "ExpectedReturnDate": "Fecha estimada de entrega",
+    "Equiment": "Equipo",
+    "DateOfRental": "Fecha de la renta",
+    "NewRental" : "Nuevo Alquiler"
+
+}
