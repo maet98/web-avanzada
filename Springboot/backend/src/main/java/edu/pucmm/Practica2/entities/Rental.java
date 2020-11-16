@@ -6,10 +6,11 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 @Entity
-public class Rental {
+public class Rental implements Comparator {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -101,5 +102,14 @@ public class Rental {
                 ", isActive=" + isActive +
                 ", orderList=" + orderList.toString() +
                 '}';
+    }
+
+    @Override
+    public int compare(Object o, Object t1) {
+        LocalDate d1 = ((Rental) o).getDateOfRental();
+        LocalDate d2 = ((Rental) t1).getDateOfRental();
+        if(d1.isAfter(d2)) return 1;
+        else if(d1.isBefore(d2)) return -1;
+        else return 0;
     }
 }

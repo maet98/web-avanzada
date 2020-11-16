@@ -40,7 +40,7 @@ public class ClientService {
         return this.clientRepository.save(new_client);
     }
 
-    public Client update(Client client, String id) {
+    public Client update(String client, ClientForm id) {
         return  null;
     }
 

@@ -2,10 +2,13 @@ package edu.pucmm.Practica2.services;
 
 import edu.pucmm.Practica2.DTO.EquimentForm;
 import edu.pucmm.Practica2.DTO.OrderDTO;
+import edu.pucmm.Practica2.DTO.UsedEquiment;
 import edu.pucmm.Practica2.entities.Equiment;
 import edu.pucmm.Practica2.entities.MyOrder;
+import edu.pucmm.Practica2.entities.Rental;
 import edu.pucmm.Practica2.repositories.EquimentRepository;
 import edu.pucmm.Practica2.repositories.OrderRepository;
+import edu.pucmm.Practica2.repositories.RentalRepository;
 import edu.pucmm.Practica2.utils.ImageProcessor;
 import edu.pucmm.Practica2.utils.ListMaker;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +28,9 @@ public class EquimentService {
 
     @Autowired
     private OrderRepository orderRepository;
+
+    @Autowired
+    private RentalRepository rentalRepository;
 
 
     public HashMap<Long,Equiment> getEquiment() {
@@ -63,6 +69,7 @@ public class EquimentService {
         return (List<Equiment>) ListMaker.makeCollection(equimentRepository.saveAll(actualizar));
     }
 
+    @Transactional
     public List<Equiment> returnEquiment(List<MyOrder> orders) {
         List<Equiment> actualizar = new ArrayList<>();
         for(MyOrder order: orders){
@@ -70,6 +77,21 @@ public class EquimentService {
             actualizar.add(order.getEquiment());
         }
         return (List<Equiment>) ListMaker.makeCollection( equimentRepository.saveAll(actualizar));
+    }
+
+    public List<UsedEquiment> getNotReceivedEquiment() {
+        List<Rental> rentals = this.rentalRepository.findAllByIsActive(true);
+        HashMap<Long,UsedEquiment> ans = new HashMap<Long, UsedEquiment>();
+        for(var rental: rentals) {
+            for(var order: rental.getOrderList()){
+                if(ans.containsKey(order.getEquiment().getId())){
+                    ans.get(order.getEquiment().getId()).setQuantity(order.getQuantity());
+                } else {
+                    ans.put(order.getEquiment().getId(), new UsedEquiment(order.getQuantity(),order.getEquiment().getName(),order.getEquiment().getId()));
+                }
+            }
+        }
+        return (List<UsedEquiment>) ans.values();
     }
 
     public List<Equiment> getAll() {
@@ -93,5 +115,14 @@ public class EquimentService {
                 image
         );
         return equimentRepository.save(equiment1);
+    }
+
+    public Equiment updateEquiment(Long id, EquimentForm equiment) throws IOException {
+        var old = this.equimentRepository.findById(id).get();
+        old.setImage(ImageProcessor.byteToString(equiment.getImage()) );
+        old.setQuantity(equiment.getQuantity());
+        old.setCost(equiment.getCost());
+        old.setName(equiment.getName());
+        return this.equimentRepository.save(old);
     }
 }

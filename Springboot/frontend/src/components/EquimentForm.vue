@@ -9,6 +9,7 @@
         id="name"
         name="name"
         required
+        :disabled="update"
       />
     </div>
     <div class="form-group">

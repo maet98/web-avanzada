@@ -20,5 +20,9 @@
   "ExpectedReturnDate": "Expected return date",
   "Equiment": "Equiment",
   "DateOfRental": "Date of rental",
-  "NewRental" : "New Rental"
+  "NewRental" : "New Rental",
+    "Rental": "Rentals",
+    "NotReturned": "Not Returned",
+  "allEquimentReturned": "All Equiment have been returned",
+  "LogOut": "LogOut"
 }

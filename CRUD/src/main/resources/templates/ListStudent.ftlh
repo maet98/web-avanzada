@@ -17,7 +17,7 @@
         </div>
         <div class="card-body">
             <div class="text-right" style="margin: 12px">
-                <a href="/student/create" >
+                <a href="/create" >
                     <button class="btn btn-primary text-right">New Student</button>
                 </a>
             </div>
@@ -41,10 +41,10 @@
                         <td>${student.apellido}</td>
                         <td>${student.telefono}</td>
                         <td>
-                            <a href="${"/student/update/"+ student.matricula?long?c}">
+                            <a href="${"/update/"+ student.matricula?long?c}">
                                 <button class="btn btn-warning" >Update</button>
                             </a>
-                            <a href="${"/student/delete/"+ student.matricula?long?c}">
+                            <a href="${"/delete/"+ student.matricula?long?c}">
                                 <button class="btn btn-danger" onclick="deleteStudent(${ student.matricula })">Delete</button>
                             </a>
                         </td>

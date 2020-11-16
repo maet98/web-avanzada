@@ -17,7 +17,6 @@ public class ClientController {
     @Autowired
     private ClientService clientService;
 
-
     @GetMapping
     public List<Client> getAll() {
         return this.clientService.getAll();
@@ -35,8 +34,8 @@ public class ClientController {
     }
 
     @PutMapping("/{id}")
-    public Client updateClient(@PathVariable("id") String id){
-        return null;
+    public Client updateClient(@PathVariable("id") String id,@ModelAttribute ClientForm model){
+        return this.clientService.update(id,model);
     }
 
     @DeleteMapping("{id}")

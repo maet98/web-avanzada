@@ -16,7 +16,6 @@ import java.util.Locale;
  * Created by vacax on 21/09/16.
  */
 @Controller()
-@RequestMapping("/student")
 public class StudentController {
 
     //Inyección de dependencia para la internacionalización
@@ -38,7 +37,7 @@ public class StudentController {
     @PostMapping("/create")
     public String addStudent(Model model,@ModelAttribute("student")Student student){
         Student new_student = studentServices.StudentCreate(student);
-        return "redirect:/student";
+        return "redirect:/";
     }
 
     @RequestMapping
@@ -53,7 +52,7 @@ public class StudentController {
     public String delete(@PathVariable("id")Integer id, Model model) {
         try {
             studentServices.deleteStudent(id);
-            return "redirect:/student";
+            return "redirect:/";
         } catch (Exception err) {
             return "";
         }
@@ -76,9 +75,9 @@ public class StudentController {
         try {
             student.setMatricula(studentId);
             studentServices.Update(studentId,student);
-            return "redirect:/student";
+            return "redirect:/";
         } catch (Exception err) {
-            return "redirect:/student";
+            return "redirect:/";
         }
     }
 }

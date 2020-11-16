@@ -38,13 +38,13 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="equiment in equiments" :key="equiment.id">
+            <tr v-for="(equiment, index) in equiments" :key="equiment.id">
               <td>{{ equiment.id }}</td>
               <td>{{ equiment.name }}</td>
               <td>{{ equiment.cost }}</td>
               <td>{{ equiment.quantity }}</td>
               <td><img :src="equiment.image" width="100" height="150" /></td>
-              <td><button class="btn btn-warning">Update </button></td>
+              <td><button @click="enableUpdate(index)" class="btn btn-warning">Update </button></td>
             </tr>
           </tbody>
         </table>
@@ -78,7 +78,8 @@ export default {
     };
   },
   mounted() {
-    this.getEquiment();
+        this.getEquiment();
+        this.clean();
   },
   methods: {
     getEquiment() {
@@ -97,6 +98,7 @@ export default {
         cost: 0,
         quantity: 0
       };
+        this.update = false;
     },
       add() {
           this.loading = true;
@@ -109,18 +111,42 @@ export default {
           }
           const config = { headers: { 'Content-Type': 'multipart/form-data' } };
           console.log(this.equiment.image);
-          window.axios
-            .post("/equiment", post, config)
-            .then(res => {
-              this.showModal = false;
-              this.loading = false;
-              this.clean();
-              console.log(res.data);
-            })
-            .catch(err => {
-              this.loading = false;
-              console.log(err);
-            });
+
+          if(!this.update){
+              window.axios
+                .post("/equiment", post, config)
+                .then(res => {
+                  this.showModal = false;
+                  this.loading = false;
+                  this.clean();
+                  console.log(res.data);
+                    this.getEquiment();
+                })
+                .catch(err => {
+                  this.loading = false;
+                  console.log(err);
+                });
+          } else {
+              post.append("id",this.equiment.id);
+              window.axios
+                .put("/equiment/" + this.equiment.id, post, config)
+                .then(res => {
+                  this.showModal = false;
+                  this.loading = false;
+                  this.clean();
+                  console.log(res.data);
+                  this.getEquiment();  
+                })
+                .catch(err => {
+                  this.loading = false;
+                  console.log(err);
+                });
+          }
+      },
+      enableUpdate(selected) {
+          this.equiment = this.equiments[selected];
+          this.update = true;
+          this.showModal = true;
       },
       changeModal(value) {
           this.showModal = value

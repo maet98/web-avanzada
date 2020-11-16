@@ -31,7 +31,7 @@
             <tr>
               <th>ID</th>
               <th>{{ $t("firstName") }}</th>
-              <th>{{ $t("LastName") }}</th>
+              <th>{{ $t("lastName") }}</th>
               <th>{{ $t("Email") }}</th>
               <th>{{ $t("Photo") }}</th>
               <th>{{ $t("Actions") }}</th>
@@ -44,7 +44,12 @@
               <td>{{ client.lastName }}</td>
               <td>{{ client.email }}</td>
               <td><img :src="client.image" width="100" height="150" /></td>
-              <td><button class="btn btn-warning">Update </button></td>
+              <td>
+                  <button class="btn btn-warning">Update </button>
+                  <button class="btn btn-info" @click="changeToInfo(client.cedula)">
+                      More Info 
+                  </button>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -96,6 +101,10 @@ export default {
             console.log("error");
         });
     },
+      changeToInfo: function(id) {
+          console.log(id);
+          this.$router.push({name:"ClientInfo", params: { id:id } });
+      },
     add() {
       this.loading = true;
       var post = new FormData();
@@ -116,6 +125,7 @@ export default {
           this.showModal = false;
           this.loading = false;
           this.clients.add(res.data);
+            this.getUsers();
         })
         .catch(err => {
           this.showModal = false;

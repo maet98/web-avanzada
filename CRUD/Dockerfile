@@ -4,8 +4,6 @@ LABEL maintainer="Miguel Estevez <maletaveras@gmail.com>"
 
 ENV NOMBRE_APP = 'Practica-1'
 
-ENV PORT = ""
-
 VOLUME ./data
 
 COPY /build/libs/Practica-1-0.0.1-SNAPSHOT.jar mi_app.jar

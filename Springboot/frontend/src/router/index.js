@@ -1,6 +1,5 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
 import Equiment from "../views/Equiment.vue";
 import Client from "../views/Client.vue";
 import Rental from "../views/Rental.vue";
@@ -8,6 +7,8 @@ import Login from "../views/Login.vue";
 import store from "../store/index";
 import RentalForm from "../components/RentalForm.vue";
 import ReturnForm from "../components/ReturnForm.vue";
+import ClientInfo from "../components/ClientInfo.vue";
+import NotReturned from "../components/NotReturned.vue";
 
 Vue.use(VueRouter);
 
@@ -26,25 +27,12 @@ const ifNotAuthenticated = (_, __, next) => {
     next();
   } else {
       next({
-          name: "Home"
+          name: "Equiment"
       })
   }
 };
 
 const routes = [
-  {
-    path: "/",
-    name: "Home",
-    component: Home,
-    beforeEnter: isAuthenticated
-  },
-  {
-    path: "/about",
-    name: "About",
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue"),
-    beforeEnter: isAuthenticated
-  },
   {
     path: "/equiment",
     name: "Equiment",
@@ -82,6 +70,19 @@ const routes = [
         name: "returnForm",
         component: ReturnForm,
         props: true,
+        beforeEnter: isAuthenticated
+    },
+    {
+        path: "/client/:id",
+        name: "ClientInfo",
+        component: ClientInfo,
+        props: true,
+        beforeEnter: isAuthenticated
+    },
+    {
+        path: "/rented",
+        name: "Rented",
+        component: NotReturned,
         beforeEnter: isAuthenticated
     }
 ];

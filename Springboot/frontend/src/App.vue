@@ -1,13 +1,12 @@
 <template>
   <div id="app">
     <div id="nav" v-if="authenticated() == true">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> |
       <router-link to="/equiment">{{ $t("Equiment") }}</router-link> |
       <router-link to="/client">{{ $t("Client") }}</router-link> |
-      <router-link to="/rental">{{ $t("Rental") }}</router-link>
+      <router-link to="/rental">{{ $t("Rental") }}</router-link> |
+      <router-link to="/rented">{{ $t("NotReturned") }}</router-link>
       <I18nChanger />
-      <button class="logout btn btn-danger" @click="logout">Log out</button>
+      <button class="logout btn btn-danger" @click="logout">{{ $t("LogOut") }}</button>
     </div>
     <router-view />
   </div>

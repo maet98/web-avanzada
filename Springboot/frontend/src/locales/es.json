@@ -20,6 +20,9 @@
     "ExpectedReturnDate": "Fecha estimada de entrega",
     "Equiment": "Equipo",
     "DateOfRental": "Fecha de la renta",
-    "NewRental" : "Nuevo Alquiler"
-
+    "NewRental" : "Nuevo Alquiler",
+    "Rental": "Alquiler",
+    "NotReturned": "No devueltos",
+    "allEquimentReturned": "Todos los equipos fueron retornados.",
+    "LogOut": "Salir"
 }

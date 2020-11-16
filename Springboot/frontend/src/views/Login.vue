@@ -36,6 +36,7 @@
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
           </b-card-text>
+          <p>Hint: admin/admin</p>
         </b-card>
   </form>
 </template>

@@ -17,19 +17,29 @@ public class MyOrder {
     private Equiment equiment;
 
     private Integer quantity;
+    private Integer OriginalQuantity;
 
     @ManyToOne
     @JsonIgnore
     private Rental rental;
 
-    public MyOrder(Equiment equiment, Integer quantity, Rental rental) {
+    public MyOrder(Equiment equiment,Integer Original, Integer quantity, Rental rental) {
         this.equiment = equiment;
         this.quantity = quantity;
         this.rental = rental;
+        this.OriginalQuantity = Original;
     }
 
     public MyOrder() {
 
+    }
+
+    public Integer getOriginalQuantity() {
+        return OriginalQuantity;
+    }
+
+    public void setOriginalQuantity(Integer originalQuantity) {
+        OriginalQuantity = originalQuantity;
     }
 
     public Long getId() {

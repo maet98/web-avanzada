@@ -62,7 +62,7 @@ export default {
     },
     methods: {
         getRentals: function() {
-            window.axios.get("/rental",{},{timeout: 2})
+            window.axios.get("/rental/active",{},{timeout: 2})
                 .then(resp => {
                     this.rentals = resp.data;
                     console.log(this.rentals);

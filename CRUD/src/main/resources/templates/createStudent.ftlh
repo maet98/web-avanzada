@@ -12,10 +12,10 @@
     </head>
     <body>
         <#if add>
-            <#assign urlAction>/student/create</#assign>
+            <#assign urlAction>/create</#assign>
             <#assign submitTitle>Create</#assign>
         <#else>
-            <#assign urlAction>${'/student/update/' + student.matricula?long?c}</#assign>
+            <#assign urlAction>${'/update/' + student.matricula?long?c}</#assign>
             <#assign submitTitle>Update</#assign>
         </#if>
         <div class="card">
