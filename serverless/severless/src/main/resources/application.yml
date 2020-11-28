@@ -1,0 +1,6 @@
+aws:
+  credentials:
+    profile-name: default
+  region:
+    static: us-east-1
+    auto: false
