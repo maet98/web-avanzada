@@ -1,4 +1,4 @@
-package com.example.serverless.funciones;
+package com.example.demo_serverless.funciones;
 
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
@@ -12,8 +12,10 @@ import com.amazonaws.services.dynamodbv2.document.*;
 import com.amazonaws.services.dynamodbv2.model.*;
 import com.amazonaws.services.dynamodbv2.util.TableUtils;
 import com.amazonaws.services.lambda.runtime.Context;
-import com.example.serverless.model.Reservation;
+import com.example.demo_serverless.model.Reservation;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -45,7 +47,7 @@ public class FuncionesDynamoDbReservation {
     }
 
     public ReservationResponse insertarReservationTable(Reservation reservation, Context context){
-        if(reservation.getId() == 0 || reservation.getNombre().isEmpty()){
+        if(reservation.getId().isEmpty() || reservation.getNombre().isEmpty()){
             throw new RuntimeException("Datos enviados no son validos");
         }
 
@@ -64,11 +66,12 @@ public class FuncionesDynamoDbReservation {
      * @param context
      * @return
      */
-    public ListarReservationResponse listarReservations(FiltroListaReservation filtro, Context context) {
+    public ListarReservationResponse listarReservations(FiltroListaReservation filtro, Context context, Boolean pasado) {
         List<Reservation> reservations = new ArrayList<>();
 
         ScanRequest scanRequest = new ScanRequest().withTableName("Reservation");
         ScanResult result = null;
+        LocalDateTime now = LocalDateTime.now();
 
         do {// La consulta vía ScanRequest solo retorna 1 MB de datos por iteracion,
             //debemos iterar.
@@ -83,13 +86,18 @@ public class FuncionesDynamoDbReservation {
             for (Map<String, AttributeValue> mapReservation : rows) {
                 System.out.println(""+mapReservation);
                 //
+                AttributeValue reservaIdAtributo = mapReservation.get("reservaId");
                 AttributeValue IdAtributo = mapReservation.get("id");
                 AttributeValue nombreAtributo = mapReservation.get("nombre");
                 AttributeValue laboratorioAtributo = mapReservation.get("laboratorio");
                 AttributeValue carreraAtributo = mapReservation.get("carrera");
+                AttributeValue fechaReserva = mapReservation.get("fechaReserva");
                 //
                 Reservation tmp = new Reservation();
-                tmp.setId(Integer.valueOf(IdAtributo.getN()));
+                tmp.setReservationId(reservaIdAtributo.getS());
+                if(IdAtributo != null){
+                    tmp.setId(IdAtributo.getS());
+                }
                 if(nombreAtributo!=null){
                     tmp.setNombre(nombreAtributo.getS());
                 }
@@ -99,7 +107,15 @@ public class FuncionesDynamoDbReservation {
                 if(carreraAtributo!=null){
                     tmp.setCarrera(carreraAtributo.getS());
                 }
-                reservations.add(tmp);
+                if(fechaReserva != null) {
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+                    tmp.setFechaReserva(LocalDateTime.parse(fechaReserva.getS(),formatter));
+                }
+                if(pasado && tmp.getFechaReserva().isAfter(now)){
+                    reservations.add(tmp);
+                } else if( !pasado && now.isAfter(tmp.getFechaReserva())){
+                    reservations.add(tmp);
+                }
             }
 
         } while (result.getLastEvaluatedKey() != null);

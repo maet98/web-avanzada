@@ -1,8 +1,8 @@
-FROM openjdk:11-jdk-slim
+FROM openjdk:13-jdk-alpine
 
 LABEL maintainer="Miguel Estevez <maletaveras@gmail.com>"
 
-ENV NOMBRE_APP = 'Productor-Practica-6'
+ENV NOMBRE_APP = 'Productor-JMS'
 
 ENV CLIENT_ID = 1
 ENV JMS_IP = "localhost"

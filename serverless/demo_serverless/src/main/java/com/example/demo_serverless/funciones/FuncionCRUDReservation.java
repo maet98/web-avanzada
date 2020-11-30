@@ -1,8 +1,8 @@
-package com.example.serverless.funciones;
+package com.example.demo_serverless.funciones;
 
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestStreamHandler;
-import com.example.serverless.model.Reservation;
+import com.example.demo_serverless.model.Reservation;
 import com.google.gson.Gson;
 import com.google.gson.JsonParser;
 import org.json.simple.parser.JSONParser;
@@ -42,7 +42,12 @@ public class FuncionCRUDReservation implements RequestStreamHandler {
             //Realizando la operacion
             switch (metodoHttp){
                 case "GET":
-                    FuncionesDynamoDbReservation.ListarReservationResponse listarReservationResponse = funcionesDynamoDbReservation.listarReservations(null, context);
+                    Boolean pasado = false;
+                    String query = (((JSONObject)evento.get("queryStringParameters")).get("pasado")).toString();
+                    if(query != null && query.equals("true")){
+                        pasado = true;
+                    }
+                    FuncionesDynamoDbReservation.ListarReservationResponse listarReservationResponse = funcionesDynamoDbReservation.listarReservations(null, context,pasado);
                     salida = gson.toJson(listarReservationResponse);
                     break;
                 case "POST":

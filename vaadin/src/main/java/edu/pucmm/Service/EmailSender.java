@@ -13,14 +13,16 @@ public class EmailSender {
     private String apiKey;
 
 
-    private SendGrid sg = new SendGrid(apiKey);
 
     public void sendEmail(String fromEmail, String toEmail, String Subject, String Content) throws IOException {
+        System.out.println(System.getenv("SENDGRID_API_KEY"));
+        System.out.println(apiKey);
         Email from = new Email(fromEmail);
         Email to = new Email(toEmail);
         Content content = new Content("text/plain", Content);
         Mail mail = new Mail(from, Subject, to, content);
 
+        SendGrid sg = new SendGrid("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");
         Request request = new Request();
         try {
             request.setMethod(Method.POST);

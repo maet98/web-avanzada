@@ -75,4 +75,16 @@ public class Event {
     public void setSend() {
         this.send = true;
     }
+
+    @Override
+    public String toString() {
+        return "Event{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", start=" + start +
+                ", end=" + end +
+                ", send=" + send +
+                ", gerente=" + gerente +
+                '}';
+    }
 }

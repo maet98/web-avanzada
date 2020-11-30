@@ -1,7 +1,9 @@
 import * as React from 'react';
 import pucmm from './pucmm.png';
 import './App.css';
+import axios from "axios";
 import styles from "./App.module.css";
+import {Reservation} from "./Models/Reservation";
 import { Reserva} from "./Component/Reserva";
 import {
     Grid,
@@ -15,7 +17,8 @@ import {
 } from "@material-ui/data-grid";
 
 function App() {
-    const [open,setOpen] = React.useState(false);
+    const [open,setOpen] = React.useState<boolean>(false);
+    const [rows,setRows] = React.useState<Reservation[] | null>(null);
     const columns: ColDef[] = [
       { field: 'id', headerName: 'ID', width: 140 },
       { field: 'nombre', headerName: 'Nombre', width: 130 },
@@ -23,26 +26,19 @@ function App() {
       { field: 'fecha', headerName: 'Fecha', width: 130 }
     ];
 
-    const rows = [
-        {
-            id: 1011111,
-            nombre: "estudiante 1",
-            Laboratorio: "REDES",
-            fecha: ""
-        },
-        {
-            id: 1123123,
-            nombre: "Estudiante 2",
-            Laboratorio: "Computacion",
-            fecha: ""
-        },
-        {
-            id: 12312323,
-            nombre: "Estudiante 3",
-            Laboratorio: "Computacion",
-            fecha: ""
-        }
-    ];
+    React.useEffect(() => {
+        axios.get("https://7ll2wokw6b.execute-api.us-east-1.amazonaws.com/default/Reservation")
+            .then(ans => {
+                var reservations: Reservation[] = ans.data.data.reservations;
+                console.log(reservations);
+                setRows(reservations);
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    },[]);
+
+    
 
   return (
     <div className="App">
@@ -64,10 +60,11 @@ function App() {
                 </Button>
                 <Modal open={open} onClose={() => setOpen(false)} >
                     <Reserva setOpen={setOpen} />
+                    <DataGrid rows={rows} columns={columns} pageSize={5} checkboxSelection />
                 </Modal>
             </Grid>
             <Grid item style={{ height: 400, width: '100%'}}>
-                <DataGrid rows={rows} columns={columns} pageSize={5} checkboxSelection />
+                <h3>No hay ningun Laboratorio Reservado</h3>:
             </Grid>
         </Grid>
     </div>
@@ -75,3 +72,5 @@ function App() {
 }
 
 export default App;
+
+//

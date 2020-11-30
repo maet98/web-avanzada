@@ -30,6 +30,7 @@ public class SendEmails {
     public void send(){
         System.out.println("Send Email was call");
         for(Event event: eventoService.notSended()){
+            System.out.println(event);
             try {
                 sendEmail(event);
                 event.setSend();
