@@ -16,28 +16,39 @@
       <v-spacer></v-spacer>
 
       <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
+          @click="link"
         text
       >
-        <span class="mr-2">Registro Pasados</span>
+      <span class="mr-2">{{text}}</span>
       </v-btn>
     </v-app-bar>
 
     <v-main>
-        <Home />
+        <router-view />
     </v-main>
   </v-app>
 </template>
 
 <script>
-import Home from "./views/Home";
 
 export default {
     name: "App",
-    components: {Home},
     data: () => ({
-    //
-    })
+        text: 'Registro Pasado'
+    }),
+    mounted() {
+        console.log(this.$router.currentRoute);
+    },
+    methods: {
+        link() {
+            if(this.$router.currentRoute.name == "Past"){
+                this.text = "Registro Pasado"
+                this.$router.push({name:"Home"});
+            } else {
+                this.text = "Volver"
+                this.$router.push({name:"Past"});
+            }
+        }
+    },
 };
 </script>

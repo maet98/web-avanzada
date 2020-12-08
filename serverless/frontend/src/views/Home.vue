@@ -5,6 +5,7 @@
       <v-data-table
         :headers="headers"
         :items="reservations"
+        :item-key="reservationId"
         class="elevation-1"
       >
         <template v-slot:top>
@@ -37,6 +38,12 @@
                       v-model="editedItem.id"
                       required
                     ></v-text-field>
+                    <v-autocomplete
+                        label="Cantidad*"
+                        :items="Array.from({length:7}, (_,i) => i+1)"
+                        v-model="editedItem.cantidad"
+                        required
+                        />
                     <v-text-field
                       label="Nombre*"
                       v-model="editedItem.nombre"
@@ -51,7 +58,7 @@
                             v-model="editedItem.laboratorio"
                           label="Laboratorio"
                         ></v-autocomplete>
-                        <v-datetime-picker label="Fecha de Reserva*" v-model="editedItem.fechaReserva" required> </v-datetime-picker>
+                        <v-datetime-picker label="Fecha de Reserva*" v-model="editedItem.fechaReserva" timeFormat="HH:mm" required> </v-datetime-picker>
                   </v-container>
                 </v-card-text>
 
@@ -87,6 +94,9 @@
             </v-dialog>
           </v-toolbar>
         </template>
+        <template v-slot:item.fechaReserva="{ item }">
+           <span>{{item.fechaReserva.toLocaleString()}}</span>
+         </template>
         <template v-slot:item.actions="{ item }">
           <v-icon
             small
@@ -119,6 +129,8 @@
 import axios from "axios";
 import Loader from "../components/Loader";
 
+var URL = "https://7ll2wokw6b.execute-api.us-east-1.amazonaws.com/default/Reservation";
+
 export default {
   name: "Home",
     components: {Loader},
@@ -131,6 +143,7 @@ export default {
           { text: 'Nombre', value: 'nombre', sortable: true },
           { text: 'Carrera', value: 'carrera' },
           { text: 'Laboratorio', value: 'laboratorio' },
+          { text: 'Cantidad', value: 'cantidad' },
           { text: 'Fecha Reserva', value: 'fechaReserva' },
           { text: 'Actions', value: 'actions', sortable: false },
         ],
@@ -141,14 +154,16 @@ export default {
             nombre: '',
             carrera: '',
             laboratorio: '',
-            fechaReserva: null
+            cantidad: 1,
+            fechaReserva: new Date()
         },
         defaultItem: {
             id: '',
             nombre: '',
+            cantidad: 1,
             carrera: '',
             laboratorio: '',
-            fechaReserva: null
+            fechaReserva: new Date()
         }
     }),
     mounted() {
@@ -160,13 +175,18 @@ export default {
         },
         getAll() {
             this.loading = true;
-            axios.get("https://7ll2wokw6b.execute-api.us-east-1.amazonaws.com/default/Reservation").then(
+            axios.get(URL + "?pasado=false").then(
                 ans => {
                     this.loading = false;
                     console.log(ans.data.data.reservations);
                     this.reservations = ans.data.data.reservations;
+                    for(let i =0;i < this.reservations.length ;i++){
+                        this.reservations[i].fechaReserva = new Date(this.reservations[i].fechaReserva)
+                    }
                 }).catch( err =>{
                     console.log(err);
+                    alert("Hubo un problema");
+                    this.loading = false;
                 })
         },
        editItem (item) {
@@ -182,9 +202,9 @@ export default {
       },
       deleteItemConfirm () {
         this.loading = true;
-          axios.delete("https://7ll2wokw6b.execute-api.us-east-1.amazonaws.com/default/Reservation",{
+          axios.delete(URL,{
               data: {
-                  id: this.editedItem.id
+                  reservationId: this.editedItem.reservationId
               }
           }).then(ans => {
             this.loading = false;
@@ -202,7 +222,6 @@ export default {
           this.editedIndex = -1
         })
       },
-
       closeDelete () {
         this.dialogDelete = false
         this.$nextTick(() => {
@@ -212,14 +231,59 @@ export default {
       },
 
       save () {
-        if (this.editedIndex > -1) {
-          Object.assign(this.reservations[this.editedIndex], this.editedItem)
-        } else {
-          this.reservations.push(this.editedItem)
+          let verificar = this.verificar();
+          if(verificar === "" ) {
+              this.editedItem.fechaReserva.setMinutes = 0;
+              this.editedItem.fechaReserva = this.editedItem.fechaReserva.toISOString().split('.')[0]+"Z";
+              this.loading = true;
+            if (this.editedIndex > -1) {
+                axios.put(URL,this.editedItem)
+                    .then(ans => {
+                        this.loading = false;
+                        this.editedItem.fechaReserva = new Date(this.editedItem.fechaReserva)
+                        Object.assign(this.reservations[this.editedIndex], this.editedItem)
+                        console.log(ans.data);
+                        this.close();
+                    })
+                    .catch(err =>{
+                        this.loading = false;
+                        this.close();
+
+                    });
+            } else {
+                axios.post(URL,this.editedItem)
+                    .then(ans => {
+                        this.editedItem.fechaReserva = new Date(this.editedItem.fechaReserva);
+                        this.reservations.push(this.editedItem)
+                        this.loading = false;
+                        console.log(ans.data);
+                        this.close()
+                    })
+                    .catch(err =>{
+                        this.loading = false;
+                        this.close()
+                    });
+            }
+              console.log(this.editedItem);
+          } else {
+              alert(verificar);
+          }
+        },
+        verificar() {
+            var date = this.editedItem.fechaReserva;
+            let hour = date.getHours();
+            if(hour >= 8 && hour <= 21) {
+                for(let i = 0;i < this.reservations.length;i++) {
+                    if(this.editedIndex == i) continue;
+                    if(this.reservations[i].fechaReserva.getTime() === date.getTime()) {
+                        return "Ya hay una reservacion a esa hora";
+                    }
+                }
+                return "";
+            } else {
+                return "Esta fuera de las horas disponibles";
+            }
         }
-          console.log(this.editedItem);
-        this.close()
-      },
     },
     computed: {
         formTitle() {
